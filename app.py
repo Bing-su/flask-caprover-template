@@ -1,7 +1,13 @@
-import streamlit as st
+from flask import Flask
 
 
-option = st.selectbox("Select one", ["Hello, World!", "foo", "spam", "python"])
-d = {"Hello, World!": "Hello, World!", "foo": "bar", "spam": "ham", "python": "3.8.10"}
+app = Flask(__name__)
 
-st.title(d[option])
+
+@app.route("/")
+def index():
+    return "Hello, World!"
+
+
+if __name__ == "__main__":
+    app.run(debug=True)
